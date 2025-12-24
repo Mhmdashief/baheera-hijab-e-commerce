@@ -1,7 +1,21 @@
+"use client";
+
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function Hero() {
+    const images = ["/banner.jpg", "/example.jpeg"];
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentImageIndex((prev) => (prev + 1) % images.length);
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, [images.length]);
+
     return (
         <div className="w-full bg-[#FDFBF7] py-12 md:py-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -30,21 +44,26 @@ export default function Hero() {
                         </p>
 
                         <button className="group flex items-center space-x-3 bg-[#5D534A] text-white px-8 py-4 rounded-full hover:bg-stone-800 transition-all duration-300">
-                            <span className="uppercase tracking-widest text-sm">Shop Now</span>
+                            <a href="/shop">Shop Now</a>
                             <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                         </button>
                     </div>
 
                     {/* Image Card */}
                     <div className="order-1 md:order-2 relative">
-                        <div className="relative aspect-[4/5] w-full max-w-md mx-auto md:mr-0 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-[#D4C4B5]/50 border-4 border-white">
-                            <Image
-                                src="/banner.jpg"
-                                alt="Baheera Luxury Hijab Model"
-                                fill
-                                className="object-cover hover:scale-105 transition-transform duration-700"
-                                priority
-                            />
+                        <div className="relative aspect-[3/4] w-full max-w-md mx-auto md:mr-0 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-[#D4C4B5]/50 border-4 border-white group">
+                            {images.map((src, index) => (
+                                <Image
+                                    key={src}
+                                    src={src}
+                                    alt={`Baheera Luxury Hijab Model ${index + 1}`}
+                                    fill
+                                    className={`object-cover transition-all duration-1000 ease-in-out group-hover:scale-105 ${currentImageIndex === index ? "opacity-100 scale-100" : "opacity-0 scale-110"
+                                        }`}
+                                    priority={index === 0}
+                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                />
+                            ))}
                         </div>
                         {/* Decorative Element */}
                         <div className="absolute -z-10 -bottom-6 -right-6 w-full h-full rounded-[2.5rem] border-2 border-[#D4C4B5] hidden md:block" />

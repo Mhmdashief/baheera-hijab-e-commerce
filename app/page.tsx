@@ -5,14 +5,15 @@ import Footer from "@/components/Footer";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
+
 export default function Home() {
   const categories = ["All", "Pashmina", "Khimar", "Segitiga", "Instan"];
 
   const featuredProducts = [
-    { name: "Beri Selendang", price: 120, image: "https://images.unsplash.com/photo-1605256585681-4558376bf9b4?w=800&auto=format&fit=crop&q=60" },
-    { name: "Seri Keling", price: 120, image: "https://images.unsplash.com/photo-1596236943804-7128f731998f?w=800&auto=format&fit=crop&q=60" },
-    { name: "Turi Udang", price: 120, image: "https://images.unsplash.com/photo-1620336215383-cf2d87e074de?w=800&auto=format&fit=crop&q=60" },
-    { name: "Sera Kung", price: 120, image: "https://images.unsplash.com/photo-1616874535244-73aea5daadb9?w=800&auto=format&fit=crop&q=60" },
+    { name: "Beri Selendang", price: 120, image: "/example.jpeg" },
+    { name: "Seri Keling", price: 120, image: "/example.jpeg" },
+    { name: "Turi Udang", price: 120, image: "/example.jpeg" },
+    { name: "Sera Kung", price: 120, image: "/example.jpeg" },
   ];
 
   const justForYou = [

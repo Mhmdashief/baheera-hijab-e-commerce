@@ -1,4 +1,4 @@
-import { Clock, ShieldCheck, Leaf, Truck, Gift } from "lucide-react";
+import { ShieldCheck, Leaf, Truck, Gift } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
@@ -42,6 +42,7 @@ export default function Footer() {
                             src="/logo.png"
                             alt="Baheera Logo"
                             fill
+                            sizes="160px"
                             className="object-contain"
                         />
                     </div>
