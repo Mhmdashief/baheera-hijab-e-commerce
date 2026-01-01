@@ -1,20 +1,90 @@
+"use client";
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import ProductCard from "@/components/ProductCard";
+import ShopProductCard from "@/components/ShopProductCard";
+import { useState, useEffect, useRef } from "react";
+import { ChevronDown } from "lucide-react";
+
+interface Category {
+    name: string;
+    hasDropdown: boolean;
+    items?: string[];
+}
+
+interface Product {
+    name: string;
+    price: number;
+    image: string;
+    category: string;
+}
+
+const ShopCategories: Category[] = [
+    { name: "All", hasDropdown: false },
+    {
+        name: "Pashmina",
+        hasDropdown: true,
+        items: ["Pashmina Ceruty", "Pashmina Kaos", "Pashmina Voal", "Pashmina Viscose"]
+    },
+    {
+        name: "Triangle",
+        hasDropdown: true,
+        items: ["Paris Premium", "Hijab Voal"]
+    },
+];
+
+const products: Product[] = [
+    { name: "Paris Premium", price: 50000, image: "/paris-premium.png", category: "Triangle" },
+    { name: "Hijab Voal", price: 55000, image: "/hijab-voal.png", category: "Triangle" },
+    { name: "Pashmina Ceruty", price: 60000, image: "/pashmina ceruty.png", category: "Pashmina" },
+    { name: "Pashmina Kaos", price: 50000, image: "/pashmina kaos.png", category: "Pashmina" },
+    { name: "Pashmina Voal", price: 60000, image: "/pashmina voal.png", category: "Pashmina" },
+    { name: "Pashmina Viscose", price: 78000, image: "/pashmina viscose.png", category: "Pashmina" },
+];
 
 export default function ShopPage() {
-    const products = [
-        { name: "Beri Selendang", price: 120, category: "Pashmina", image: "/example.jpeg" },
-        { name: "Seri Keling", price: 120, category: "Instan", image: "/example.jpeg" },
-        { name: "Turi Udang", price: 120, category: "Pattern", image: "/example.jpeg" },
-        { name: "Sera Kung", price: 120, category: "Square", image: "/example.jpeg" },
-        { name: "Silk Touch", price: 150, category: "Pashmina", image: "/example.jpeg" },
-        { name: "Velvet Dream", price: 180, category: "Pattern", image: "/example.jpeg" },
-        { name: "Classic Nude", price: 95, category: "Square", image: "/example.jpeg" },
-        { name: "Midnight Blue", price: 110, category: "Instan", image: "/example.jpeg" },
-    ];
+    const [selectedCategory, setSelectedCategory] = useState<string>("All");
+    const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+    const dropdownRef = useRef<HTMLDivElement>(null);
 
-    const categories = ["All", "Pashmina", "Square", "Instan", "Pattern"];
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                setOpenDropdown(null);
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
+    const toggleDropdown = (category: string) => {
+        if (openDropdown === category) {
+            setOpenDropdown(null);
+        } else {
+            setOpenDropdown(category);
+        }
+    };
+
+    const handleMainCategoryClick = (category: string, hasDropdown: boolean) => {
+        if (hasDropdown) {
+            toggleDropdown(category);
+        } else {
+            setSelectedCategory(category);
+            setOpenDropdown(null);
+        }
+    };
+
+    const handleSubCategoryClick = (item: string) => {
+        setSelectedCategory(item);
+        setOpenDropdown(null);
+    };
+
+    const filteredProducts = products.filter((product) => {
+        if (selectedCategory === "All") return true;
+        return product.category === selectedCategory || product.name === selectedCategory;
+    });
 
     return (
         <div className="bg-[#FDFBF7] min-h-screen pt-24">
@@ -29,29 +99,59 @@ export default function ShopPage() {
                 </div>
 
                 {/* Filters */}
-                <div className="flex flex-wrap justify-center gap-8 mb-16 border-b border-[#EFEBE4] pb-6">
-                    {categories.map((cat, i) => (
-                        <button
-                            key={cat}
-                            className={`text-sm uppercase tracking-widest hover:text-primary transition-colors ${i === 0 ? "text-primary font-semibold" : "text-[#8C8C8C]"}`}
-                        >
-                            {cat}
-                        </button>
+                <div className="flex flex-wrap justify-center gap-8 text-sm uppercase tracking-widest text-[#8C8C8C] mb-16 px-4" ref={dropdownRef}>
+                    {ShopCategories.map((cat) => (
+                        <div key={cat.name} className="relative inline-block text-left">
+                            <button
+                                onClick={() => handleMainCategoryClick(cat.name, cat.hasDropdown)}
+                                className={`flex items-center gap-1 hover:text-primary transition-all duration-300 ${selectedCategory === cat.name || (cat.items && cat.items.includes(selectedCategory)) ? "text-primary border-b border-primary pb-1" : ""}`}
+                            >
+                                {cat.name}
+                                {cat.hasDropdown && (
+                                    <ChevronDown
+                                        size={14}
+                                        className={`transition-transform duration-300 ${openDropdown === cat.name ? "rotate-180" : ""}`}
+                                    />
+                                )}
+                            </button>
+
+                            {/* Dropdown Menu */}
+                            <div
+                                className={`absolute left-1/2 -translate-x-1/2 mt-4 w-56 rounded-xl bg-white/90 backdrop-blur-lg shadow-[0_8px_30px_rgb(0,0,0,0.06)] ring-1 ring-black/5 transform transition-all duration-300 origin-top z-50 overflow-hidden ${cat.hasDropdown && openDropdown === cat.name
+                                    ? "opacity-100 scale-100 translate-y-0 visible"
+                                    : "opacity-0 scale-95 -translate-y-2 invisible pointer-events-none"
+                                    }`}
+                            >
+                                <div className="py-2">
+                                    {cat.items?.map((item) => (
+                                        <button
+                                            key={item}
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                handleSubCategoryClick(item);
+                                            }}
+                                            className={`block w-full px-6 py-3 text-sm text-stone-600 hover:bg-[#F3EFEA] hover:text-[#5D534A] hover:pl-7 transition-all duration-300 text-left ${selectedCategory === item ? "bg-[#F3EFEA] text-[#5D534A] pl-7" : ""}`}
+                                        >
+                                            {item}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
                     ))}
                 </div>
 
                 {/* Product Grid */}
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-                    {products.map((product, index) => (
-                        <ProductCard key={index} {...product} />
-                    ))}
-                </div>
-
-                {/* Load More */}
-                <div className="mt-20 text-center">
-                    <button className="px-8 py-3 bg-white border border-[#D4C4B5] text-[#5D534A] text-xs uppercase tracking-widest hover:bg-[#5D534A] hover:text-white transition-colors duration-300">
-                        Load More
-                    </button>
+                    {filteredProducts.length > 0 ? (
+                        filteredProducts.map((product, index) => (
+                            <ShopProductCard key={index} {...product} />
+                        ))
+                    ) : (
+                        <p className="col-span-full text-center text-[#8C8C8C] py-10">
+                            No products found in this category.
+                        </p>
+                    )}
                 </div>
             </main>
 

@@ -86,48 +86,52 @@ export default function Home() {
 
       <main>
         {/* Back to School Promo */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <motion.div
-            initial={{ opacity: 0, y: 40, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <Link href="/shop" className="block group relative overflow-hidden rounded-[2.5rem] shadow-2xl hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)] transition-all duration-700">
-              <div className="relative w-full">
+            <div className="relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 max-w-4xl mx-auto group">
+              {/* Image Container with fixed aspect ratio */}
+              <div className="relative aspect-[21/9] w-full">
                 <Image
                   src="/back-to-school.png"
                   alt="Back to School Collection"
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                  className="w-full h-auto object-cover transition-all duration-1000 group-hover:brightness-105"
+                  fill
+                  className="object-cover transition-all duration-700 group-hover:scale-105"
                   priority
                 />
 
-                {/* Elegant Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/5 via-transparent to-black/5 group-hover:bg-black/10 transition-colors duration-500" />
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20 group-hover:from-black/30 group-hover:to-black/30 transition-colors duration-500" />
 
                 {/* Shine Effect */}
-                <div className="absolute inset-0 -translate-x-[150%] skew-x-12 group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-white/25 to-transparent z-10" />
+                <div className="absolute inset-0 -translate-x-[150%] skew-x-12 group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-                {/* Floating CTA */}
-                <div className="absolute bottom-3 right-3 md:bottom-5 md:right-5 z-20">
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-3 bg-white/95 backdrop-blur-xl px-10 py-5 rounded-full shadow-lg border border-white/50 group-hover:border-primary/20 transition-colors duration-300"
-                  >
-                    <span className="font-serif text-[#4A4A4A] tracking-widest text-sm uppercase">Shop The Sale</span>
-                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                      <ArrowRight size={14} />
-                    </div>
-                  </motion.div>
+                {/* Content Overlay */}
+                <div className="absolute inset-0 z-10 p-8 flex items-end justify-start">
+                  {/* CTA Button */}
+                  <Link href={"/shop"}>
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex items-center gap-3 bg-white/95 backdrop-blur-xl px-8 py-3.5 rounded-full shadow-lg border border-white/50 group-hover:bg-white group-hover:border-primary/30 transition-all duration-300"
+                    >
+                      <span className="font-serif text-[#4A4A4A] tracking-widest text-sm uppercase">Shop Now</span>
+                      <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                        <ArrowRight size={14} />
+                      </div>
+                    </motion.div>
+                  </Link>
                 </div>
               </div>
-            </Link>
+            </div>
           </motion.div>
         </section>
+
+
         {/* Categories */}
         <div className="py-12 text-center relative z-20">
           <div className="border-t border-[#D4C4B5] w-24 mx-auto mb-8"></div>
@@ -189,7 +193,9 @@ export default function Home() {
           <div className="flex justify-center mt-12">
             <button className="flex items-center space-x-2 text-primary hover:text-stone-900 transition-colors text-sm uppercase tracking-widest">
               <span>Explore More</span>
-              <ArrowRight size={16} />
+              <Link href="/shop">
+                <ArrowRight size={16} />
+              </Link>
             </button>
           </div>
         </section>
@@ -258,9 +264,9 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </main>
+      </main >
 
       <Footer />
-    </div>
+    </div >
   );
 }
