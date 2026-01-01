@@ -3,11 +3,27 @@
 @theme {
   --font-serif: var(--font-playfair);
   --font-sans: var(--font-lato);
-  
-  --color-primary: #5D534A; /* Muted Brown */
-  --color-secondary: #8C8C8C; /* Light Gray */
-  --color-accent: #D4C4B5; /* Beige */
-  --color-background: #FDFBF7; /* Cream/White */
+
+  --color-primary: #5D534A;
+  /* Muted Brown */
+  --color-secondary: #8C8C8C;
+  /* Light Gray */
+  --color-accent: #D4C4B5;
+  /* Beige */
+  --color-background: #FDFBF7;
+  /* Cream/White */
+
+  --animate-marquee: marquee 30s linear infinite;
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 body {
@@ -15,3 +31,18 @@ body {
   background-color: var(--color-background);
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+}

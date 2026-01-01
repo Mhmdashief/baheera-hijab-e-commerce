@@ -2,71 +2,43 @@
 
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { useState, useEffect } from "react";
+
+
 
 export default function Hero() {
-    const images = ["/banner.jpg", "/example.jpeg"];
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentImageIndex((prev) => (prev + 1) % images.length);
-        }, 5000);
-
-        return () => clearInterval(interval);
-    }, [images.length]);
-
     return (
-        <div className="w-full bg-[#FDFBF7] py-12 md:py-20">
+        <div className="w-full bg-[#FDFBF7] pb-8 md:pb-12 pt-28 md:pt-32">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
-                    {/* Text Content */}
-                    <div className="order-2 md:order-1 flex flex-col items-center md:items-start text-center md:text-left space-y-8">
-                        <div>
-                            <span className="text-[#8C8C8C] text-sm tracking-[0.3em] uppercase mb-4 block">New Collection 2025</span>
-                            <h1 className="font-serif text-5xl md:text-7xl text-[#5D534A] leading-tight">
-                                <div className="relative w-48 h-16 md:w-64 md:h-24 mb-2">
-                                    <Image
-                                        src="/logo.png"
-                                        alt="Baheera Logo"
-                                        fill
-                                        className="object-contain object-center md:object-left"
-                                        priority
-                                    />
-                                </div>
-                                <span className="font-serif italic text-4xl md:text-6xl text-[#8C8C8C] font-light">Hijab Series</span>
+                {/* Banner Container */}
+                <div className="relative w-full aspect-[16/9] md:aspect-[2/1] lg:aspect-[2.4/1] rounded-[2.5rem] overflow-hidden shadow-2xl shadow-stone-200/50 group">
+                    <Image
+                        src="/banner.jpeg"
+                        alt="Baheera Luxury Collection"
+                        fill
+                        className="object-cover object-center transition-transform duration-1000 group-hover:scale-105"
+                        priority
+                    />
+
+                    {/* Content Overlay - Glassmorphism Card */}
+                    <div className="absolute inset-0 flex items-center justify-end p-6 md:p-12 lg:p-20">
+                        <div className="relative bg-white/70 backdrop-blur-md p-8 md:p-12 rounded-3xl max-w-lg w-full shadow-lg border border-white/50 animate-fade-in-up">
+                            <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#5D534A] leading-tight mb-4">
+                                Eksploring the Beauty of <br />
+                                <span className="italic">Hijabs</span> <br />
+                                Latest
                             </h1>
+
+                            <p className="text-stone-600 text-sm md:text-base mb-8 leading-relaxed">
+                                Comfortable and Fashionable Collection for Your Everyday Style
+                            </p>
+
+                            <a
+                                href="/shop"
+                                className="inline-block w-full text-center bg-[#AC8475] text-white py-3 px-6 rounded-lg uppercase tracking-wider text-sm font-medium hover:bg-[#967062] transition-colors shadow-md"
+                            >
+                                Shop Now
+                            </a>
                         </div>
-
-                        <p className="text-stone-600 text-lg leading-relaxed max-w-md">
-                            Discover the perfect harmony of modesty and modern elegance.
-                            Our premium hijabs are crafted for comfort, designed for you.
-                        </p>
-
-                        <button className="group flex items-center space-x-3 bg-[#5D534A] text-white px-8 py-4 rounded-full hover:bg-stone-800 transition-all duration-300">
-                            <a href="/shop">Shop Now</a>
-                            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                        </button>
-                    </div>
-
-                    {/* Image Card */}
-                    <div className="order-1 md:order-2 relative">
-                        <div className="relative aspect-[3/4] w-full max-w-md mx-auto md:mr-0 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-[#D4C4B5]/50 border-4 border-white group">
-                            {images.map((src, index) => (
-                                <Image
-                                    key={src}
-                                    src={src}
-                                    alt={`Baheera Luxury Hijab Model ${index + 1}`}
-                                    fill
-                                    className={`object-cover transition-all duration-1000 ease-in-out group-hover:scale-105 ${currentImageIndex === index ? "opacity-100 scale-100" : "opacity-0 scale-110"
-                                        }`}
-                                    priority={index === 0}
-                                    sizes="(max-width: 768px) 100vw, 50vw"
-                                />
-                            ))}
-                        </div>
-                        {/* Decorative Element */}
-                        <div className="absolute -z-10 -bottom-6 -right-6 w-full h-full rounded-[2.5rem] border-2 border-[#D4C4B5] hidden md:block" />
                     </div>
                 </div>
             </div>

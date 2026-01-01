@@ -24,10 +24,10 @@ export default function Navbar() {
                         </Link>
                     </div>
                     <div className="hidden sm:flex items-center space-x-8">
-                        {["Home", "Shop", "Collections", "About"].map((item) => (
+                        {["Home", "About Us", "Shop"].map((item) => (
                             <Link
                                 key={item}
-                                href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+                                href={item === "Home" ? "/" : item === "About Us" ? "/about-us" : item === "Shop" ? "/shop" : `/${item.toLowerCase()}`}
                                 className="text-stone-600 hover:text-primary uppercase text-xs tracking-widest transition-colors font-sans"
                             >
                                 {item}
@@ -37,9 +37,6 @@ export default function Navbar() {
 
                     {/* Icons */}
                     <div className="flex items-center space-x-6 ml-4">
-                        <button className="text-stone-600 hover:text-primary transition-colors">
-                            <Search size={22} strokeWidth={1.5} />
-                        </button>
                         <button className="text-stone-600 hover:text-primary transition-colors relative">
                             <ShoppingBag size={22} strokeWidth={1.5} />
                             <span className="absolute -top-1 -right-1 bg-stone-800 text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full">

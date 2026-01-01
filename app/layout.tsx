@@ -14,7 +14,7 @@ const lato = Lato({
 });
 
 export const metadata: Metadata = {
-  title: "Baheera | Luxury Fashion Accessories",
+  title: "Baheera | Hijab Series",
   description: "Discover our premium collection of fashion accessories.",
 };
 

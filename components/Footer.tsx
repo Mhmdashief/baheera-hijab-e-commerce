@@ -1,7 +1,8 @@
 import { ShieldCheck, Leaf, Truck, Gift } from "lucide-react";
-import { FaXTwitter } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
+import { IoLogoTiktok } from "react-icons/io5";
+
 
 
 
@@ -16,7 +17,7 @@ export default function Footer() {
                     <div className="flex flex-col items-center">
                         <Truck className="mb-4 text-stone-600" size={32} strokeWidth={1} />
                         <h4 className="font-serif text-lg mb-2">Fast Shipping</h4>
-                        <p className="text-xs text-stone-500 max-w-[150px]">Free on orders over $120. Delivered swiftly.</p>
+                        <p className="text-xs text-stone-500 max-w-[150px]">Delivered swiftly.</p>
                     </div>
                     <div className="flex flex-col items-center">
                         <Leaf className="mb-4 text-stone-600" size={32} strokeWidth={1} />
@@ -54,9 +55,9 @@ export default function Footer() {
 
                     {/* Socials */}
                     <div className="flex space-x-8 mb-12">
-                        <a href="#" className="hover:text-stone-900 transition-colors"><FaXTwitter size={20} /></a>
-                        <a href="#" className="hover:text-stone-900 transition-colors"><FaWhatsapp size={20} /></a>
-                        <a href="#" className="hover:text-stone-900 transition-colors"><FaInstagram size={20} /></a>
+                        <a href="https://www.tiktok.com/@_aliolioo?_r=1&_t=ZS-92hYr5lGBN" className="hover:text-stone-900 transition-colors"><IoLogoTiktok size={20} /></a>
+                        <a href="https://wa.me/6287700721012" className="hover:text-stone-900 transition-colors"><FaWhatsapp size={20} /></a>
+                        <a href="https://www.instagram.com/aymardyanti?igsh=MTFwcG45dDFzOGUzeQ==" className="hover:text-stone-900 transition-colors"><FaInstagram size={20} /></a>
 
                     </div>
 
@@ -65,14 +66,14 @@ export default function Footer() {
                     {/* Contact Info */}
                     <div className="space-y-4 text-sm text-stone-600 mb-16">
                         <p>support@baheera.store</p>
-                        <p>+(62) 888 8888 888</p>
-                        <p>08:00 - 22:00 • Everyday</p>
+                        <p>+62 877-0072-1012</p>
+                        <p>Always on Everyday</p>
                     </div>
 
                     {/* Links */}
                     <div className="flex space-x-12 uppercase text-xs tracking-widest text-[#5D534A]">
-                        <a href="#" className="hover:text-stone-900 transition-colors">About</a>
-                        <a href="#" className="hover:text-stone-900 transition-colors">Contact</a>
+                        <a href="/about-us" className="hover:text-stone-900 transition-colors">About Us</a>
+                        <a href="https://wa.me/6287700721012" target="_blank" className="hover:text-stone-900 transition-colors">Contact</a>
                     </div>
 
                     <div className="mt-16 text-[10px] text-stone-400">
