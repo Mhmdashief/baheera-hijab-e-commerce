@@ -2,10 +2,6 @@ import { ShieldCheck, Leaf, Truck, Gift } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { IoLogoTiktok } from "react-icons/io5";
-
-
-
-
 import Image from "next/image";
 
 export default function Footer() {
@@ -37,7 +33,6 @@ export default function Footer() {
                 </div>
 
                 <div className="flex flex-col items-center text-center">
-                    {/* Logo */}
                     <div className="relative w-40 h-16 mb-8">
                         <Image
                             src="/logo.png"

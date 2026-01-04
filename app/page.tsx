@@ -95,7 +95,7 @@ export default function Home() {
           >
             <div className="relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 max-w-4xl mx-auto group">
               {/* Image Container with fixed aspect ratio */}
-              <div className="relative aspect-[21/9] w-full">
+              <div className="relative aspect-[4/5] sm:aspect-[21/9] w-full">
                 <Image
                   src="/back-to-school.png"
                   alt="Back to School Collection"
@@ -105,23 +105,23 @@ export default function Home() {
                 />
 
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20 group-hover:from-black/30 group-hover:to-black/30 transition-colors duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-black/40 sm:from-black/20 via-transparent to-black/20 group-hover:from-black/30 group-hover:to-black/30 transition-colors duration-500" />
 
                 {/* Shine Effect */}
                 <div className="absolute inset-0 -translate-x-[150%] skew-x-12 group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
                 {/* Content Overlay */}
-                <div className="absolute inset-0 z-10 p-8 flex items-end justify-start">
+                <div className="absolute inset-0 z-10 p-6 sm:p-8 flex items-end justify-center sm:justify-start">
                   {/* CTA Button */}
                   <Link href={"/shop"}>
                     <motion.div
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-3 bg-white/95 backdrop-blur-xl px-8 py-3.5 rounded-full shadow-lg border border-white/50 group-hover:bg-white group-hover:border-primary/30 transition-all duration-300"
+                      className="flex items-center gap-3 bg-white/95 backdrop-blur-xl px-6 sm:px-8 py-3 sm:py-3.5 rounded-full shadow-lg border border-white/50 group-hover:bg-white group-hover:border-primary/30 transition-all duration-300"
                     >
-                      <span className="font-serif text-[#4A4A4A] tracking-widest text-sm uppercase">Shop Now</span>
-                      <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                        <ArrowRight size={14} />
+                      <span className="font-serif text-[#4A4A4A] tracking-widest text-xs sm:text-sm uppercase">Shop Now</span>
+                      <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                        <ArrowRight size={12} />
                       </div>
                     </motion.div>
                   </Link>
@@ -202,7 +202,7 @@ export default function Home() {
 
         {/* Scan Matching Face */}
         <section className="mb-24 px-4 sm:px-6">
-          <div className="relative w-full max-w-6xl mx-auto h-[400px] rounded-3xl overflow-hidden group">
+          <div className="relative w-full max-w-6xl mx-auto h-[300px] sm:h-[400px] rounded-3xl overflow-hidden group">
             <Image
               src="/scan-your-matching-skin.png"
               alt="Scan Matching Face"
@@ -210,9 +210,9 @@ export default function Home() {
               className="object-cover transition-transform duration-1000 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
-            <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
-              <h2 className="font-serif text-4xl md:text-5xl mb-4 drop-shadow-lg">Scan your <br /> matching face</h2>
-              <button className="mt-6 px-8 py-3 bg-white/20 backdrop-blur-sm border border-white/40 rounded-full hover:bg-white hover:text-stone-900 transition-all font-sans text-sm tracking-widest uppercase">
+            <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white p-4">
+              <h2 className="font-serif text-3xl md:text-5xl mb-4 drop-shadow-lg leading-tight">Scan your <br /> matching face</h2>
+              <button className="mt-4 sm:mt-6 px-6 sm:px-8 py-2.5 sm:py-3 bg-white/20 backdrop-blur-sm border border-white/40 rounded-full hover:bg-white hover:text-stone-900 transition-all font-sans text-xs sm:text-sm tracking-widest uppercase">
                 Try Now
               </button>
             </div>
@@ -226,39 +226,39 @@ export default function Home() {
             <span className="text-sm tracking-[0.3em] text-[#8C8C8C] font-sans uppercase">The Collection</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             {/* Masterpiece 1 */}
-            <div className="group relative h-[600px] w-full overflow-hidden rounded-[2rem] cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500">
+            <div className="group relative h-[450px] sm:h-[600px] w-full overflow-hidden rounded-[2rem] cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500">
               <Image
                 src="/masterpiece 1.png"
                 alt="Masterpiece Collection 1"
                 fill
                 className="object-cover transition-transform duration-1000 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-              <div className="absolute bottom-8 left-8 text-white transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                <p className="font-serif text-2xl italic mb-2">Signature Series</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+              <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 text-white translate-y-0 sm:translate-y-4 opacity-100 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100 transition-all duration-500">
+                <p className="font-serif text-xl sm:text-2xl italic mb-2">Signature Series</p>
                 <div className="flex items-center gap-2">
-                  <span className="uppercase tracking-widest text-xs font-semibold">Discover</span>
-                  <ArrowRight size={14} />
+                  <span className="uppercase tracking-widest text-[10px] sm:text-xs font-semibold">Discover</span>
+                  <ArrowRight size={12} />
                 </div>
               </div>
             </div>
 
             {/* Masterpiece 2 - Staggered Layout */}
-            <div className="group relative h-[600px] w-full overflow-hidden rounded-[2rem] cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 md:mt-16">
+            <div className="group relative h-[450px] sm:h-[600px] w-full overflow-hidden rounded-[2rem] cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 md:mt-16">
               <Image
                 src="/masterpiece 2.png"
                 alt="Masterpiece Collection 2"
                 fill
                 className="object-cover transition-transform duration-1000 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-              <div className="absolute bottom-8 left-8 text-white transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                <p className="font-serif text-2xl italic mb-2">Limited Edition</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+              <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 text-white translate-y-0 sm:translate-y-4 opacity-100 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100 transition-all duration-500">
+                <p className="font-serif text-xl sm:text-2xl italic mb-2">Limited Edition</p>
                 <div className="flex items-center gap-2">
-                  <span className="uppercase tracking-widest text-xs font-semibold">Discover</span>
-                  <ArrowRight size={14} />
+                  <span className="uppercase tracking-widest text-[10px] sm:text-xs font-semibold">Discover</span>
+                  <ArrowRight size={12} />
                 </div>
               </div>
             </div>
