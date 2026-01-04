@@ -93,41 +93,23 @@ export default function Home() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <div className="relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 max-w-4xl mx-auto group">
-              {/* Image Container with fixed aspect ratio */}
-              <div className="relative aspect-[4/5] sm:aspect-[21/9] w-full">
-                <Image
-                  src="/back-to-school.png"
-                  alt="Back to School Collection"
-                  fill
-                  className="object-cover transition-all duration-700 group-hover:scale-105"
-                  priority
-                />
+            <Link href={"/shop"}>
+              <div className="relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 max-w-4xl mx-auto group">
+                {/* Image Container with fixed aspect ratio */}
+                <div className="relative aspect-[16/10] sm:aspect-[21/9] w-full">
+                  <Image
+                    src="/back-to-school.png"
+                    alt="Back to School Collection"
+                    fill
+                    className="object-cover transition-all duration-700 group-hover:scale-105"
+                    priority
+                  />
 
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-r from-black/40 sm:from-black/20 via-transparent to-black/20 group-hover:from-black/30 group-hover:to-black/30 transition-colors duration-500" />
-
-                {/* Shine Effect */}
-                <div className="absolute inset-0 -translate-x-[150%] skew-x-12 group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-
-                {/* Content Overlay */}
-                <div className="absolute inset-0 z-10 p-6 sm:p-8 flex items-end justify-center sm:justify-start">
-                  {/* CTA Button */}
-                  <Link href={"/shop"}>
-                    <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-3 bg-white/95 backdrop-blur-xl px-6 sm:px-8 py-3 sm:py-3.5 rounded-full shadow-lg border border-white/50 group-hover:bg-white group-hover:border-primary/30 transition-all duration-300"
-                    >
-                      <span className="font-serif text-[#4A4A4A] tracking-widest text-xs sm:text-sm uppercase">Shop Now</span>
-                      <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                        <ArrowRight size={12} />
-                      </div>
-                    </motion.div>
-                  </Link>
+                  {/* Subtle Shine Effect - keep it for polish */}
+                  <div className="absolute inset-0 -translate-x-[150%] skew-x-12 group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                 </div>
               </div>
-            </div>
+            </Link>
           </motion.div>
         </section>
 
